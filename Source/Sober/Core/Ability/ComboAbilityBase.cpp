@@ -7,6 +7,7 @@
 #include "Sober/Core/SoberGameplayTags.h"
 #include "Sober/Core/SoberAttributeSet.h"
 #include "Sober/Core/SoberAbilitySystemComponent.h"
+#include "Sober/Components/WeaponCollisionComponent.h"
 
 FOnComboSectionChanged UComboAbilityBase::OnComboSectionChanged;
 
@@ -167,12 +168,15 @@ FComboSectionData* UComboAbilityBase::GetCurrentSectionData() const
 
 void UComboAbilityBase::ApplyDamageEffect(const FComboSectionData& SectionData)
 {
-    if (!SectionData.DamageEffect) return;
+    AActor* Avatar = GetAvatarActorFromActorInfo();
+    if (!Avatar) return;
 
-    // Lưu ý: đây là nơi CHỈ apply lên bản thân nếu cần buff/cost.
-    // Damage lên ĐỊCH thực tế nên làm qua overlap/trace event riêng (Weapon Collision Component)
-    // rồi gọi ApplyGameplayEffectSpecToTarget ở đó — không apply damage lên chính mình ở đây.
-    // Phần này để placeholder cho hook mở rộng khi bạn làm Weapon Trace System.
+    if (UWeaponCollisionComponent* WeaponComp = Avatar->FindComponentByClass<UWeaponCollisionComponent>())
+    {
+        WeaponComp->CurrentDamageEffect = SectionData.DamageEffect;
+        WeaponComp->CurrentBaseDamage = SectionData.BaseDamage;
+        WeaponComp->CurrentKnockbackForce = 400.f; // có thể thêm field riêng vào FComboSectionData nếu muốn tùy biến theo đòn
+    }
 }
 
 void UComboAbilityBase::OnMontageCompleted()

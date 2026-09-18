@@ -32,6 +32,11 @@ void FSoberGameplayTags::InitializeNativeGameplayTags()
 		FName("Ability.Combo.Air"),
 		FString("Ability_Combo_Air Tag")
 	);
+
+	SoberGameplayTags.Ability_HitReact = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Ability.HitReact"),
+		FString("Ability_HitReact Tag")
+	);
 #pragma endregion
 
 #pragma region State
@@ -53,6 +58,11 @@ void FSoberGameplayTags::InitializeNativeGameplayTags()
 	SoberGameplayTags.State_ComboWindowOpen = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("State.ComboWindowOpen"),
 		FString("State_ComboWindowOpen Tag")
+	);
+
+	SoberGameplayTags.State_HitReacting = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("State.HitReacting"),
+		FString("State_HitReacting Tag")
 	);
 #pragma endregion
 
@@ -89,6 +99,11 @@ void FSoberGameplayTags::InitializeNativeGameplayTags()
 	SoberGameplayTags.Event_Combo_Hit = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Event.Combo.Hit"),
 		FString("Event_Combo_Hit Tag")
+	);
+
+	SoberGameplayTags.Event_Combat_HitReact = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Event.Combat.HitReact"),
+		FString("Event_Combat_HitReact Tag")
 	);
 #pragma endregion
 
@@ -131,6 +146,11 @@ void FSoberGameplayTags::InitializeNativeGameplayTags()
 	SoberGameplayTags.SetByCaller_StaminaCost = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("SetByCaller.StaminaCost"),
 		FString("SetByCaller_StaminaCost Tag")
+	);
+
+	SoberGameplayTags.SetByCaller_KnockbackForce = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("SetByCaller.KnockbackForce"),
+		FString("SetByCaller_KnockbackForce Tag")
 	);
 #pragma endregion
 

@@ -30,11 +30,13 @@ public:
 	FGameplayTag Ability_Type_Attack;
 	FGameplayTag Ability_Combo_Ground;
 	FGameplayTag Ability_Combo_Air;
+	FGameplayTag Ability_HitReact;
 #pragma endregion
 
 #pragma region State
 	FGameplayTag State_Dead;
 	FGameplayTag State_Stunned;
+	FGameplayTag State_HitReacting;
 	FGameplayTag State_Attacking;
 	FGameplayTag State_ComboWindowOpen;
 #pragma endregion
@@ -52,6 +54,7 @@ public:
 	FGameplayTag Event_Combo_WindowOpen;
 	FGameplayTag Event_Combo_WindowClose;
 	FGameplayTag Event_Combo_Hit;
+	FGameplayTag Event_Combat_HitReact;
 #pragma endregion
 
 #pragma region Setbycaller GE
@@ -63,6 +66,7 @@ public:
 	FGameplayTag SetByCaller_Armor;
 	FGameplayTag SetByCaller_Damage;
 	FGameplayTag SetByCaller_StaminaCost;
+	FGameplayTag SetByCaller_KnockbackForce;
 #pragma endregion
 
 #pragma region Input
